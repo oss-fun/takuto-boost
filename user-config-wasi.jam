@@ -1,0 +1,16 @@
+using clang : wasi : /opt/wasi-sdk-21/bin/clang++ :
+    <compileflags>"--target=wasm32-wasi"
+    <compileflags>"--sysroot=/opt/wasi-sdk-21/share/wasi-sysroot"
+    <compileflags>"-D_WASI_EMULATED_MMAN"
+    <compileflags>"-fno-exceptions"
+    <compileflags>"-DBOOST_NO_EXCEPTIONS"
+
+    <linkflags>"--target=wasm32-wasi"
+    <linkflags>"--sysroot=/opt/wasi-sdk-21/share/wasi-sysroot"
+    <linkflags>"-lwasi-emulated-mman"
+
+    <archiver>"/opt/wasi-sdk-21/bin/llvm-ar"
+    <ranlib>"/opt/wasi-sdk-21/bin/llvm-ranlib"
+;
+
+using zlib : 1.3 : <include>"/home/osslab/cartographer-library/wasi/zlib" <search>"/home/osslab/cartographer-library/wasi/zlib" <name>z ;
